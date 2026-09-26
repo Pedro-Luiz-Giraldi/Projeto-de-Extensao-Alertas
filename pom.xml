@@ -43,13 +43,17 @@
 			<scope>test</scope>
 		</dependency>
 
-        <!-- Source: https://mvnrepository.com/artifact/com.rabbitmq/stream-client -->
-        <dependency>
-            <groupId>com.rabbitmq</groupId>
-            <artifactId>stream-client</artifactId>
-            <version>1.11.0</version>
-            <scope>compile</scope>
-        </dependency>
+		<!-- Spring for RabbitMQ -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
