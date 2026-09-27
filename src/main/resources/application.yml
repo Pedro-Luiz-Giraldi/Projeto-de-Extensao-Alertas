@@ -33,3 +33,6 @@ app:
         - 30
         - 15
         - 7
+    devolucao:
+      limite-pendencia:
+        - 7
