@@ -6,7 +6,12 @@ logging:
     org.springframework.amqp: DEBUG
     org.springframework.rabbit: DEBUG
 
+server:
+  port: 8082
+
 spring:
+  profiles:
+    active: dev
   application:
     name: sistema_alertas
   rabbitmq:
@@ -16,7 +21,15 @@ spring:
     password: admin
 
 app:
+  monolito:
+    base-url: ${MONOLITO_URL:http://localhost:8081}
   rabbitmq:
     exchange_name: ${EXCHANGE_NAME:exchange_alertas}
     queue_name: ${QUEUE_NAME:queue_alertas}
     routing_key_name: ${ROUTING_KEY_NAME:routing_key_alertas}
+  alertas:
+    vencimento:
+      dias-antecedencia:
+        - 30
+        - 15
+        - 7
