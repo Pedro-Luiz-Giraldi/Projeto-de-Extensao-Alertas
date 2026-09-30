@@ -15,7 +15,7 @@ spring:
   application:
     name: sistema_alertas
   rabbitmq:
-    host: localhost
+    host: ${RABBIT_HOST:localhost}
     port: 5672
     username: admin
     password: admin
