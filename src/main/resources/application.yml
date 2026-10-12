@@ -34,5 +34,4 @@ app:
         - 15
         - 7
     devolucao:
-      limite-pendencia:
-        - 7
+      limite-pendencia: 7
