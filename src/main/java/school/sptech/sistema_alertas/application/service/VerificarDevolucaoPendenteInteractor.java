@@ -27,15 +27,15 @@ public class VerificarDevolucaoPendenteInteractor implements VerificarDevolucaoP
     @Override
     public void verificar(LocalDate hoje) {
         List<Devolucao> devolucoes = solicitacaoGateway.buscarDevolucoes();
-
         devolucoes.forEach(devolucao -> {
             if (devolucao.isPendente(hoje, limitePendencia)) {
                 alertaNotification.notificar(new AlertaMessage(
                         "DEVOLUCAO_PENDENTE",
                         devolucao.getId(),
-                        "",
-                        "",
+                        "PENDENTE_DEVOLUCAO",
+                        "Devolução Pendente",
                         LocalDateTime.now()));
+                System.out.println("Mensagem Enviada!!");
             }
         });
     }

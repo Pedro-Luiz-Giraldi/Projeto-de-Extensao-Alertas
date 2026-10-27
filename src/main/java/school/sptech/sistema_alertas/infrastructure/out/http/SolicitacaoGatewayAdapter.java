@@ -42,13 +42,13 @@ public class SolicitacaoGatewayAdapter implements SolicitacaoGatewayPort {
     @Override
     public List<Devolucao> buscarDevolucoes() {
         List<DevolucaoResponse> response = restClient.get()
-            .uri("/v1/solicitacoes/devolucoes/pendentes")
+            .uri("/v1/solicitacoes/devolucoes")
             .retrieve()
             .body(new ParameterizedTypeReference<List<DevolucaoResponse>>() {});
 
         return response.stream()
             .map(res -> Devolucao.criar(
-                        res.id(),
+                        res.solicitacao(),
                         res.dataCriacao()))
             .toList();
     }

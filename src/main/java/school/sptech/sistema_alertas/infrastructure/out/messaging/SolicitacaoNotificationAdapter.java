@@ -4,6 +4,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import school.sptech.sistema_alertas.application.dto.AlertaMapper;
 import school.sptech.sistema_alertas.application.port.out.SolicitacaoNotificationPort;
 import school.sptech.sistema_alertas.infrastructure.config.RabbitMqProperties;
 
@@ -24,7 +25,7 @@ public class SolicitacaoNotificationAdapter implements SolicitacaoNotificationPo
         rabbitTemplate.convertAndSend(
                 properties.exchangeName(),
                 properties.routingKeyName(),
-                solicitacaoId);
+                AlertaMapper.toAlerta(solicitacaoId));
     }
 
 }
