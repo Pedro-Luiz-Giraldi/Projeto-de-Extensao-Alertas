@@ -8,6 +8,7 @@ import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.amqp.support.converter.JacksonJsonMessageConverter;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,22 +36,40 @@ public class RabbitMqConfig {
         return new DirectExchange(properties.exchangeName());
     }
 
-    @Bean
+    @Bean("alertasQueue")
     public Queue getQueue() {
         return QueueBuilder
             .durable(properties.queueName())
             .build();
     }
 
+    @Bean("emailQueue")
+    public Queue getEmailQueue() {
+        return QueueBuilder
+            .durable(properties.emailQueueName())
+            .build();
+    }
+
     @Bean
     public Binding getBinding(
-            Queue queue,
+            @Qualifier("alertasQueue") Queue queue,
             DirectExchange directExchange
     ) {
         return BindingBuilder
             .bind(queue)
             .to(directExchange)
             .with(properties.routingKeyName());
+    }
+
+    @Bean
+    public Binding getEmailBinding(
+            @Qualifier("emailQueue") Queue emailQueue,
+            DirectExchange directExchange
+    ) {
+        return BindingBuilder
+            .bind(emailQueue)
+            .to(directExchange)
+            .with(properties.emailRoutingKeyName());
     }
 
     @Bean

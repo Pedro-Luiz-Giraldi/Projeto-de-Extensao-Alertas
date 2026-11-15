@@ -27,6 +27,8 @@ app:
     exchange_name: ${EXCHANGE_NAME:exchange_alertas}
     queue_name: ${QUEUE_NAME:queue_alertas}
     routing_key_name: ${ROUTING_KEY_NAME:routing_key_alertas}
+    email_queue_name: ${EMAIL_QUEUE_NAME:queue_email}
+    email_routing_key_name: ${EMAIL_ROUTING_KEY_NAME:routing_key_email}
   alertas:
     vencimento:
       dias-antecedencia:

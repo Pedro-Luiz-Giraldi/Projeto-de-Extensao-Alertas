@@ -6,5 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public record RabbitMqProperties(
     String exchangeName,
     String queueName,
-    String routingKeyName
+    String routingKeyName,
+    String emailQueueName,
+    String emailRoutingKeyName
 ) {}
