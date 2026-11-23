@@ -6,7 +6,6 @@ target/
 
 .env
 .envrc
-.env.example
 
 ### STS ###
 .apt_generated
